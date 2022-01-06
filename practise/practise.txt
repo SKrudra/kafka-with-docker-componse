@@ -1,0 +1,11 @@
+# create a topic
+kafka-topics --create --partitions 1 --replication-factor 1 --topic quickstart-events --bootstrap-server localhost:9092
+
+# check if created
+kafka-topics --describe --topic quickstart-events --bootstrap-server localhost:9092
+
+# write data into topic using console; stop the producer with Ctrl+c
+kafka-console-producer --topic quickstart-events --bootstrap-server localhost:9092
+
+# read data from the topic using console; stop the consumer with Ctrl+c
+kafka-console-consumer --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
