@@ -9,3 +9,18 @@ kafka-console-producer --topic quickstart-events --bootstrap-server localhost:90
 
 # read data from the topic using console; stop the consumer with Ctrl+c
 kafka-console-consumer --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+# list all the topics 
+kafka-topics --bootstrap-server=localhost:9092 --list
+
+
+################# setting up Confluent Platform ########################
+# Download or copy the contents of the Confluent Platform all-in-one Docker Compose file
+# Or manually copy and create the file
+
+curl --silent --output docker-compose.yml \
+  https://raw.githubusercontent.com/confluentinc/cp-all-in-one/7.0.1-post/cp-all-in-one/docker-compose.yml
+
+
+# Start the Confluent Platform stack with the -d option to run in detached mode:
+docker-compose up -d
