@@ -13,6 +13,12 @@ kafka-console-consumer --topic quickstart-events --from-beginning --bootstrap-se
 # list all the topics 
 kafka-topics --bootstrap-server=localhost:9092 --list
 
+# stop a docker container
+docker stop <container-name>
+
+# One specific file can be copied TO the container like:
+docker cp foo.txt container_id:/foo.txt
+
 
 ################# setting up Confluent Platform ########################
 # Download or copy the contents of the Confluent Platform all-in-one Docker Compose file
@@ -24,3 +30,10 @@ curl --silent --output docker-compose.yml \
 
 # Start the Confluent Platform stack with the -d option to run in detached mode:
 docker-compose up -d
+
+# Verify that the services are up and running:
+docker-compose ps
+
+# to exit and remove all the containers and volumes:
+docker-compose down -v 
+
