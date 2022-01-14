@@ -19,6 +19,15 @@ docker stop <container-name>
 # One specific file can be copied TO the container like:
 docker cp foo.txt container_id:/foo.txt
 
+# Remove a container and its volumes
+docker rm -v redis
+ 
+# Force-remove a running container
+docker rm --force redis 
+
+# List all the running containers
+docker ps
+
 
 ################# setting up Confluent Platform ########################
 # Download or copy the contents of the Confluent Platform all-in-one Docker Compose file
@@ -36,4 +45,10 @@ docker-compose ps
 
 # to exit and remove all the containers and volumes:
 docker-compose down -v 
+
+# docker-activemq
+docker pull rmohr/activemq
+
+# manually upload the plugin
+
 
