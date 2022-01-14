@@ -50,5 +50,8 @@ docker-compose down -v
 docker pull rmohr/activemq
 
 # manually upload the plugin
+docker cp <extracted plugin folder>\. connect:/usr/share/confluent-hub-components
 
+# logs of the Kafka-connect
+docker-compose logs <container-name>
 
