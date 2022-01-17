@@ -55,3 +55,27 @@ docker cp <extracted plugin folder>\. connect:/usr/share/confluent-hub-component
 # logs of the Kafka-connect
 docker-compose logs <container-name>
 
+# Adding activemq srouce connector
+docker cp connectors\confluentinc-kafka-connect-activemq-11.0.11 connect:/usr/share/confluent-hub-components
+
+# Adding elasticsearch sink connector
+docker cp connectors\confluentinc-kafka-connect-elasticsearch-11.1.7 connect:/usr/share/confluent-hub-components
+
+# Create activemq-jms-connector
+
+POST: http://localhost:8083/connectors/activemq-jms-connector/config
+BODY: 
+{
+  "connector.class": "io.confluent.connect.activemq.ActiveMQSourceConnector",
+  "activemq.url": "tcp://<server>:61616", // localhost/127.0.0.1/0.0.0.0 etc. might not work, get the actual host address with ipconfig
+  "max.poll.duration": "60000",
+  "tasks.max": "1",
+  "batch.size": "1",
+  "name": "activemq-jms-connector",
+  "jms.destination.name": "jms-test",
+  "kafka.topic": "check-call-src",
+  "activemq.password": "****",
+  "jms.destination.type": "topic",
+  "use.permissive.schema": "false",
+  "activemq.username": "username"
+}
