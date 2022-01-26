@@ -79,3 +79,29 @@ BODY:
   "use.permissive.schema": "false",
   "activemq.username": "username"
 }
+
+
+# Create ES sink connector
+
+POST: http://localhost:8083/connectors/elasticsearch-sink/config
+BODY:
+{
+ "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+ "tasks.max": "1",
+ "topics": "check-call-des",
+ "connection.url": "http://10.1.233.6:9200",
+ "type.name": "_doc"
+}
+
+
+
+# generate certificate to use ES sink connector
+# make sure openssl is installed at below location
+# run the cmd as administrator
+openssl req -new -x509 -config "c:\openssl\openssl.cnf" -keyout cacert.key -out cacert.pem -days 666
+
+> Enter PEM pass phrase
+	pass
+> answer other questions
+
+
